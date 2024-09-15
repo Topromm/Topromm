@@ -144,3 +144,4 @@ if __name__ == '__main__':
     
     svg_overwrite('dark_mode.svg', age_data)
     svg_overwrite('light_mode.svg', age_data)
+
