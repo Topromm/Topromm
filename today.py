@@ -77,9 +77,21 @@ def svg_overwrite(filename, age_data, joke):
     f.write(svg.toxml('utf-8').decode('utf-8'))
     f.close()
 
-    # Append the joke at the end of the README
-    with open('README.md', 'a', encoding='utf-8') as readme_file:
-        readme_file.write(f"\n\n### Awful Joke of the Day\n{joke}")
+    # Replace the joke in the README.md
+    with open('README.md', 'r+', encoding='utf-8') as readme_file:
+        content = readme_file.readlines()
+        # Find the line with the marker and replace it with the new joke
+        for i, line in enumerate(content):
+            if '<!-- JOKE HERE -->' in line:
+                content[i] = f"### Awful Joke of the Day\n{joke}\n"
+                break
+        else:
+            # If marker not found, append the joke at the end (as a fallback)
+            content.append(f"\n### Awful Joke of the Day\n{joke}\n")
+
+        readme_file.seek(0)
+        readme_file.writelines(content)
+        readme_file.truncate()  # Ensure the file is truncated to the new size
 
 def svg_element_getter(filename):
     """
