@@ -8,3 +8,10 @@
 
 ### Awful Joke of the Day
 Why do programmers prefer dark mode? Because light attracts bugs!
+
+
+### Awful Joke of the Day
+Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.
+
+### Awful Joke of the Day
+Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.
