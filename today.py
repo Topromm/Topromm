@@ -1,12 +1,10 @@
-from dateutil import relativedelta
-from xml.dom import minidom
-import requests
 import datetime
-import hashlib
-import random
-import json
-import time
+from dateutil import relativedelta
+import requests
 import os
+from xml.dom import minidom
+import time
+import hashlib
 
 # Personal access token with permissions: read:enterprise, read:org, read:repo_hook, read:user, repo
 HEADERS = {'authorization': 'token '+ os.environ['ACCESS_TOKEN']}
@@ -38,10 +36,6 @@ def format_plural(unit):
     """
     return 's' if unit != 1 else ''
 
-def get_random_joke(jokes_file):
-    with open(jokes_file, 'r') as f:
-        jokes = json.load(f)
-    return random.choice(jokes)
 
 def simple_request(func_name, query, variables):
     """
@@ -52,7 +46,7 @@ def simple_request(func_name, query, variables):
         return request
     raise Exception(func_name, ' has failed with a', request.status_code, request.text, QUERY_COUNT)
 
-def svg_overwrite(filename, age_data, joke):
+def svg_overwrite(filename, age_data):
     """
     Parse SVG files and update elements with my age, commits, stars, repositories, and lines written
     """
@@ -74,24 +68,11 @@ def svg_overwrite(filename, age_data, joke):
     else:
         print("Uptime information not found or unable to update.")
 
+
+
     f.write(svg.toxml('utf-8').decode('utf-8'))
     f.close()
 
-    # Replace the joke in the README.md
-    with open('README.md', 'r+', encoding='utf-8') as readme_file:
-        content = readme_file.readlines()
-        # Find the line with the marker and replace it with the new joke
-        for i, line in enumerate(content):
-            if '<!-- JOKE HERE -->' in line:
-                content[i] = f"### Awful Joke of the Day\n{joke}\n"
-                break
-        else:
-            # If marker not found, append the joke at the end (as a fallback)
-            content.append(f"\n### Awful Joke of the Day\n{joke}\n")
-
-        readme_file.seek(0)
-        readme_file.writelines(content)
-        readme_file.truncate()  # Ensure the file is truncated to the new size
 
 def svg_element_getter(filename):
     """
@@ -150,11 +131,16 @@ def formatter(query_type, difference, funct_return=False, whitespace=0):
 
 
 if __name__ == '__main__':
+    """
+    """
     print('Calculation times:')
+    # define global variable for owner ID and calculate user's creation date
+    # e.g {'id': 'MDQ6VXNlcjU3MzMxMTM0'} and 2019-11-03T21:15:07Z for username 'Andrew6rant'
+    # user_data, user_time = perf_counter(user_getter, USER_NAME)
+    # OWNER_ID, acc_date = user_data
+    # formatter('account data', user_time)
     age_data, age_time = perf_counter(daily_readme, datetime.datetime(2003, 5, 13))
     formatter('age calculation', age_time)
-
-    joke = get_random_joke('jokes.json')
-    svg_overwrite('dark_mode.svg', age_data, joke)
-    svg_overwrite('light_mode.svg', age_data, joke)
-
+    
+    svg_overwrite('dark_mode.svg', age_data)
+    svg_overwrite('light_mode.svg', age_data)
