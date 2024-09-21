@@ -1,10 +1,12 @@
-import datetime
 from dateutil import relativedelta
-import requests
-import os
 from xml.dom import minidom
-import time
+import requests
+import datetime
 import hashlib
+import random
+import json
+import time
+import os
 
 # Personal access token with permissions: read:enterprise, read:org, read:repo_hook, read:user, repo
 HEADERS = {'authorization': 'token '+ os.environ['ACCESS_TOKEN']}
@@ -36,6 +38,10 @@ def format_plural(unit):
     """
     return 's' if unit != 1 else ''
 
+def get_random_joke(jokes_file):
+    with open(jokes_file, 'r') as f:
+        jokes = json.load(f)
+    return random.choice(jokes)
 
 def simple_request(func_name, query, variables):
     """
@@ -46,7 +52,7 @@ def simple_request(func_name, query, variables):
         return request
     raise Exception(func_name, ' has failed with a', request.status_code, request.text, QUERY_COUNT)
 
-def svg_overwrite(filename, age_data):
+def svg_overwrite(filename, age_data, joke):
     """
     Parse SVG files and update elements with my age, commits, stars, repositories, and lines written
     """
@@ -68,11 +74,12 @@ def svg_overwrite(filename, age_data):
     else:
         print("Uptime information not found or unable to update.")
 
-
-
     f.write(svg.toxml('utf-8').decode('utf-8'))
     f.close()
 
+    # Append the joke at the end of the README
+    with open('README.md', 'a', encoding='utf-8') as readme_file:
+        readme_file.write(f"\n\n### Awful Joke of the Day\n{joke}")
 
 def svg_element_getter(filename):
     """
@@ -131,17 +138,11 @@ def formatter(query_type, difference, funct_return=False, whitespace=0):
 
 
 if __name__ == '__main__':
-    """
-    """
     print('Calculation times:')
-    # define global variable for owner ID and calculate user's creation date
-    # e.g {'id': 'MDQ6VXNlcjU3MzMxMTM0'} and 2019-11-03T21:15:07Z for username 'Andrew6rant'
-    # user_data, user_time = perf_counter(user_getter, USER_NAME)
-    # OWNER_ID, acc_date = user_data
-    # formatter('account data', user_time)
     age_data, age_time = perf_counter(daily_readme, datetime.datetime(2003, 5, 13))
     formatter('age calculation', age_time)
-    
+
+    joke = get_random_joke('jokes.json')
     svg_overwrite('dark_mode.svg', age_data)
     svg_overwrite('light_mode.svg', age_data)
 
