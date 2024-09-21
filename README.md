@@ -5,4 +5,8 @@
   </picture>
 </a>
 
-<!-- JOKE HERE -->
+### Awful Joke of the Day
+What is a programmer's favorite hangout place? Foo Bar.
+
+### Awful Joke of the Day
+What is a programmer's favorite hangout place? Foo Bar.
