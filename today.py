@@ -143,6 +143,6 @@ if __name__ == '__main__':
     formatter('age calculation', age_time)
 
     joke = get_random_joke('jokes.json')
-    svg_overwrite('dark_mode.svg', age_data)
-    svg_overwrite('light_mode.svg', age_data)
+    svg_overwrite('dark_mode.svg', age_data, joke)
+    svg_overwrite('light_mode.svg', age_data, joke)
 
