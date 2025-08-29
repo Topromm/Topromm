@@ -58,7 +58,6 @@ text, tspan {white-space: pre;}
 <tspan x="20" y="390" class="keyColor">Contact</tspan>:
 <tspan x="20" y="410">———————</tspan>
 <tspan x="20" y="430" class="keyColor">Email</tspan>: <tspan class="valueColor">topromm@outlook.com</tspan>
-<tspan x="20" y="450" class="keyColor">LinkedIn</tspan>: <tspan class="valueColor">in/toprom</tspan>
 </text>
 
 </svg>
