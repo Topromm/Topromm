@@ -49,7 +49,7 @@ text, tspan {white-space: pre;}
 <tspan x="20" y="130" class="keyColor">Host</tspan>: <tspan class="valueColor">Undefined</tspan>
 <tspan x="20" y="150" class="keyColor">Kernel</tspan>: <tspan class="valueColor">Software Developer</tspan>
 <tspan x="20" y="170" class="keyColor">IDE</tspan>: <tspan class="valueColor">VSCode</tspan>
-<tspan x="20" y="210" class="keyColor">Languages</tspan>.<tspan class="keyColor">Programming</tspan>: <tspan class="valueColor">Python, JavaScript, TypeScript, C#</tspan>
+<tspan x="20" y="210" class="keyColor">Languages</tspan>.<tspan class="keyColor">Programming</tspan>: <tspan class="valueColor">Python, JavaScript, TypeScript, Java, C#</tspan>
 <tspan x="20" y="230" class="keyColor">Languages</tspan>.<tspan class="keyColor">Frameworks</tspan>: <tspan class="valueColor">React, Node.js, Flask</tspan>
 <tspan x="20" y="250" class="keyColor">Languages</tspan>.<tspan class="keyColor">Computer</tspan>.<tspan class="keyColor">Markup</tspan>: <tspan class="valueColor">HTML, CSS, Markdown</tspan>
 <tspan x="20" y="270" class="keyColor">Languages</tspan>.<tspan class="keyColor">Computer</tspan>.<tspan class="keyColor">Data Formats</tspan>: <tspan class="valueColor">JSON, XML</tspan>
