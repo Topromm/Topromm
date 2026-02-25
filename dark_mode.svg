@@ -9,7 +9,7 @@ text, tspan {white-space: pre;}
 </style>
 
 <rect width="970px" height="530px" fill="#161b22" rx="15"/>
-<text x="470" y="-30" fill="#c9d1d9" class="ascii">
+<text x="470" y="-30" fill="#30b830" class="ascii">
   <tspan x="470" y="-30">                                                                         </tspan>
   <tspan x="470" y="-10">                                                                         </tspan>
   <tspan x="470" y="0">                                                                         </tspan>
